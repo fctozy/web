@@ -1,0 +1,21 @@
+.navbar-custom,
+.footer-custom  {
+  background-color: #A0522D;
+}
+
+
+.navbar-custom .navbar-brand {
+  color: #ffffff;
+}
+
+.navbar-custom .nav-link:hover {
+  color: #c2b0b0;
+}
+/*
+ * 設定 "啟用中" (active) 連結的顏色。
+ * 我們用 .nav-link.active 來提高 CSS 優先級，
+ * 這樣才能成功覆蓋 Bootstrap 的預設 .active 樣式。
+*/
+.navbar-custom .nav-link.active {
+  color: #ffffff;
+}
