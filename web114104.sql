@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- 主機: 127.0.0.1
--- 產生時間： 
--- 伺服器版本: 10.1.22-MariaDB
--- PHP 版本： 7.1.4
+-- 主機： 127.0.0.1
+-- 產生時間： 2025-11-25 06:41:53
+-- 伺服器版本： 10.4.32-MariaDB
+-- PHP 版本： 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,6 +24,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `expenses`
+--
+
+CREATE TABLE `expenses` (
+  `id` int(11) NOT NULL,
+  `activity_id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `note` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `incomes`
+--
+
+CREATE TABLE `incomes` (
+  `id` int(11) NOT NULL,
+  `activity_id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `note` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `payments`
 --
 
@@ -34,10 +63,10 @@ CREATE TABLE `payments` (
   `payment_date` date NOT NULL,
   `payment_method` varchar(50) NOT NULL,
   `studentid` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- 資料表的匯出資料 `payments`
+-- 傾印資料表的資料 `payments`
 --
 
 INSERT INTO `payments` (`payment_id`, `amount`, `payment_date`, `payment_method`, `studentid`) VALUES
@@ -59,10 +88,10 @@ CREATE TABLE `users` (
   `name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- 資料表的匯出資料 `users`
+-- 傾印資料表的資料 `users`
 --
 
 INSERT INTO `users` (`userid`, `studentid`, `name`, `email`, `phone`) VALUES
@@ -73,8 +102,20 @@ INSERT INTO `users` (`userid`, `studentid`, `name`, `email`, `phone`) VALUES
 (5, '413401666', '黃小禎', '', NULL);
 
 --
--- 已匯出資料表的索引
+-- 已傾印資料表的索引
 --
+
+--
+-- 資料表索引 `expenses`
+--
+ALTER TABLE `expenses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `incomes`
+--
+ALTER TABLE `incomes`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- 資料表索引 `payments`
@@ -91,25 +132,39 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `studentid` (`studentid`);
 
 --
--- 在匯出的資料表使用 AUTO_INCREMENT
+-- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
 
 --
--- 使用資料表 AUTO_INCREMENT `payments`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `expenses`
+--
+ALTER TABLE `expenses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `incomes`
+--
+ALTER TABLE `incomes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `payments`
 --
 ALTER TABLE `payments`
   MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
--- 使用資料表 AUTO_INCREMENT `users`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `users`
 --
 ALTER TABLE `users`
   MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- 已匯出資料表的限制(Constraint)
+-- 已傾印資料表的限制式
 --
 
 --
--- 資料表的 Constraints `payments`
+-- 資料表的限制式 `payments`
 --
 ALTER TABLE `payments`
   ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`studentid`) REFERENCES `users` (`studentid`);
