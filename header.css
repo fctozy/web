@@ -1,6 +1,6 @@
 .navbar-custom,
 .footer-custom  {
-  background-color: #A0522D;
+  background-color: #4b6b8b;
 }
 
 
@@ -9,7 +9,7 @@
 }
 
 .navbar-custom .nav-link:hover {
-  color: #c2b0b0;
+  color: #b0b4c2;
 }
 /*
  * 設定 "啟用中" (active) 連結的顏色。

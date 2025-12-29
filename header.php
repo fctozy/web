@@ -36,13 +36,13 @@ function nav_active($file) {
                     <a class="nav-link <?= nav_active('income.php') ?>" href="income.php">收入管理</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= nav_active('expenses.php') ?>" href="expenses.php">支出管理</a>
+                    <a class="nav-link <?= nav_active('expense.php') ?>" href="expense.php">支出管理</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?= nav_active('payment.php') ?>" href="payment.php">收費管理</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= nav_active('activities.php') ?>" href="activities.php">活動管理</a>
+                    <a class="nav-link <?= nav_active('user.php') ?>" href="user.php">學生管理</a>
                 </li>
             </ul>
         </div>
